@@ -18,13 +18,18 @@
 
 ## 📌 Overview
 
-Safe adversary simulation for detection testing
+OCymulate is a breach-and-attack simulation (BAS) helper for safe purple-team detection testing. It emulates adversary-like beacons and recon behaviours with a default safety policy that restricts targets to localhost and private ranges. External targets require an explicit unsafe opt-in so drills stay controlled.
 
 ---
 
 ## ✨ Features
 
-- Safe purple-team C2 beacon BAS (HTTP/DNS/recon) for detection testing — distinct from OChain host-propagation discovery
+- Module-based BAS runs for HTTP/DNS-style beacon and recon behaviours
+- Default localhost/private-only targeting with dry-run support
+- Explicit --unsafe-external gate for authorised external drills
+- Configurable beacon count, ports, URL, and DNS domain parameters
+- MITRE coverage export plus optional Markdown reports
+- Non-interactive --yes mode for scripted detection pipelines
 
 ---
 
@@ -38,7 +43,10 @@ Safe adversary simulation for detection testing
 ## 🚀 Usage
 
 ```bash
-./OCymulate
+./OCymulate --module beacon --target 127.0.0.1 --dry-run
+./OCymulate --module recon --target 10.0.0.5 --ports 80,443 --yes
+./OCymulate --mitre-export --save-md
+./OCymulate --help
 ```
 
 ---
